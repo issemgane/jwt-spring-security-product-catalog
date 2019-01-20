@@ -1,5 +1,7 @@
 package com.appstude.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,11 +17,18 @@ public class AppUser implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY )
 	private Long id;
-	//@Column(unique=true)
-	@Column
+
+	@Column(unique=true)
+	//@Column
 	private String username;
 	//@JsonIgnore
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@Column
 	private String password;
+
+	@Column
+	private boolean active;
+
 	@ManyToMany(fetch=FetchType.EAGER)
 	private Collection<AppRole> roles = new ArrayList<>();
 	
@@ -68,7 +77,12 @@ public class AppUser implements Serializable {
 	public void setRoles(Collection<AppRole> roles) {
 		this.roles = roles;
 	}
-	
-	
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 }

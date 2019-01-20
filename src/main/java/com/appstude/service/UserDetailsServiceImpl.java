@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		AppUser appUser = accountService.findUserByUserName(username);
 		
 		if(appUser==null){
-			throw new UsernameNotFoundException("");
+			throw new UsernameNotFoundException("User not found !");
 		}
 		
 		Collection<GrantedAuthority> authorities = new ArrayList<>();

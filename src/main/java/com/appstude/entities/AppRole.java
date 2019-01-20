@@ -3,12 +3,7 @@ package com.appstude.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import javax.persistence.*;
-
-
-
-
 
 @Entity
 @Table(name="ROLES")
